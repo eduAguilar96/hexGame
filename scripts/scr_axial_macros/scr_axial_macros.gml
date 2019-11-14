@@ -1,0 +1,1 @@
+#macro QR_POINT_USED_BITS 16
