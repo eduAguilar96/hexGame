@@ -159,6 +159,14 @@
             }
         },
         {
+            "Key": "4820adb2-ee56-472f-a221-acd76bac7baf",
+            "Value": {
+                "id": "d0ace492-875b-43af-9c75-2e1af3d24771",
+                "resourcePath": "scripts\/scr_xy_point_sum\/scr_xy_point_sum.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "48a931c9-313a-4299-9775-9422c2648f02",
             "Value": {
                 "id": "028e1e55-06ce-4bcb-a3df-add088b98265",
@@ -491,6 +499,7 @@
         "19f94007-28e9-4679-b85b-5cca44db01fb",
         "d7e6760b-57bc-44e3-9502-908d02d3ca37",
         "068ab72f-24dd-4712-9d18-a6dc0319e7f0",
+        "4820adb2-ee56-472f-a221-acd76bac7baf",
         "4cc641c2-69b0-46e3-ac69-72d6b04d2b2e"
     ],
     "tutorial": ""

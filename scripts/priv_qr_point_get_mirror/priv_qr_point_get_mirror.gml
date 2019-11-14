@@ -7,7 +7,7 @@ var qrKey = argument0;
 var dir_nbr_map = [5,0,1,2,3,4];
 var dir_diagonal = argument1;
 var ans = scr_qr_point_get_nbr(scr_qr_point_get_diagonal_n(qrKey, dir_diagonal, global.map_radius-1), dir_nbr_map[dir_diagonal]);
-show_debug_message(dir_diagonal);
+/* show_debug_message(dir_diagonal);
 show_debug_message(qrKey);
-show_debug_message(ans);
+show_debug_message(ans); */
 return ans;
