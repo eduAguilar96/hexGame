@@ -31,14 +31,33 @@ for(var i = 1; i < global.map_radius; i++){
 	axial_points = scr_ds_list_concat(axial_points, ring);
 }
 
-//instance all hexes from axial_points list
+// Structure all qrKeys from axial_points list
 var num_hexes_in_map = ds_list_size(axial_points);
 for (var qr_i = 0; qr_i < num_hexes_in_map; qr_i++; ){
+	// get hex qrKey
 	var auxQrKey = axial_points[| qr_i];
-	var inst = instance_create_layer(0,0,layer_id, obj_hex);
-	var hex_seed = ceil(random(1)*1000);
+	//Add qrKey to data structures
+	global.hex_data[? auxQrKey] = scr_hex_create();
+	ds_list_add(global.hex_qrKey, auxQrKey);
+}
 
-	show_debug_message("hex:"+string(auxQrKey)+", hex_seed :"+string(hex_seed));
+// Generate individual hex data and instantiate
+var hex_prev_seed = global.hex_initial_seed
+for (var qr_i = 0; qr_i < num_hexes_in_map; qr_i++; ){
+	// get hex qrKey
+	var auxQrKey = axial_points[| qr_i];
+	// gen random values
+	random_set_seed(hex_prev_seed);
+	var hex_terrain_seed = ceil(random(1)*10000);
+	random_set_seed(hex_terrain_seed);
+	var hex_building_seed = ceil(random(1)*10000);
+	hex_prev_seed = hex_building_seed;
+	show_debug_message("hex:"+string(auxQrKey)+", terrain_seed :"+string(hex_terrain_seed));
+	show_debug_message("hex:"+string(auxQrKey)+", building_seed :"+string(hex_building_seed));
+
+
+
+	var inst = instance_create_layer(0,0,layer_id, obj_hex);
 	with(inst){
 		qrKey = auxQrKey;
 		pos_q = scr_qr_point_get_q(auxQrKey);
