@@ -1,7 +1,10 @@
+global.max_int = 16777215;
+/* global.max_int = 100; */
 global.debugging_grid = false;
 global.debugging_hex = true;
 global.hex_height = sprite_get_width(object_get_sprite(obj_hex)); //distance from vertix to opp vertix
-global.hex_initial_seed = 1276;
+global.hex_initial_seed = 2;
+
 
 //Axial q and r Basis vectors' components
 global.q_x = 1.6654; //stndr = aproxx 1.73
@@ -31,14 +34,16 @@ enum hex{
   player3 //inst
 }
 enum terrain{
-  na,
-  grass,
-  forest,
-  swamp,
-  desert,
-  mountain,
-  water
+  na = 0,
+  grass = 1,
+  forest = 2,
+  swamp = 3,
+  desert = 4,
+  mountain = 5,
+  water = 6,
+  empty = 7
 }
+global.enum_terrain_length = 8;
 global.terrain_name = [];
 global.terrain_name[terrain.na] = "Na";
 global.terrain_name[terrain.grass] = "Grass";
@@ -47,20 +52,22 @@ global.terrain_name[terrain.swamp] = "Swamp";
 global.terrain_name[terrain.desert] = "Desert";
 global.terrain_name[terrain.mountain] = "Mountain";
 global.terrain_name[terrain.water] = "Water";
+global.terrain_name[terrain.empty] = "Empty";
 enum building{
-  na,
-  world_start,
-  world_exit,
-  town,
-  church,
-  dungeon,
-  fort,
-  mage_tower,
-  castle,
-  fountain,
-  altar,
-  monster_camp
+  na = 0,
+  world_start = 1,
+  world_exit = 2,
+  town = 3,
+  church = 4,
+  dungeon = 5,
+  fort = 6,
+  mage_tower = 7,
+  castle = 8,
+  fountain = 9,
+  altar = 10,
+  monster_camp = 11
 }
+global.enum_building_length = 12;
 global.building_name = [];
 global.building_name[building.na] = "Na";
 global.building_name[building.world_start] = "Start";

@@ -45,17 +45,27 @@ for (var qr_i = 0; qr_i < num_hexes_in_map; qr_i++; ){
 var hex_prev_seed = global.hex_initial_seed
 for (var qr_i = 0; qr_i < num_hexes_in_map; qr_i++; ){
 	// get hex qrKey
-	var auxQrKey = axial_points[| qr_i];
+	var auxQrKey = global.hex_qrKey[| qr_i];
 	// gen random values
 	random_set_seed(hex_prev_seed);
-	var hex_terrain_seed = ceil(random(1)*10000);
+	var hex_terrain_seed = ceil(random_range(0, global.max_int));
 	random_set_seed(hex_terrain_seed);
-	var hex_building_seed = ceil(random(1)*10000);
+	var hex_building_seed = ceil(random_range(0, global.max_int));
 	hex_prev_seed = hex_building_seed;
-	show_debug_message("hex:"+string(auxQrKey)+", terrain_seed :"+string(hex_terrain_seed));
-	show_debug_message("hex:"+string(auxQrKey)+", building_seed :"+string(hex_building_seed));
+	//show_debug_message("hex:"+string(auxQrKey)+", terrain_seed :"+string(hex_terrain_seed));
+	//show_debug_message("hex:"+string(auxQrKey)+", ter_hex_seed :"+scr_dec_2_hexa_string(hex_terrain_seed));
+	//show_debug_message("hex:"+string(auxQrKey)+", building_seed :"+string(hex_building_seed));
+	//show_debug_message("hex:"+string(auxQrKey)+", bld_hex_seed :"+scr_dec_2_hexa_string(hex_building_seed));
+	//show_debug_message("");
+	
+	var pointer = global.hex_data[? auxQrKey];
+	pointer[@ hex.terrain_seed] = hex_terrain_seed;
+	pointer[@ hex.building_seed] = hex_building_seed;
+}
 
-
+// Instantiate Hexs
+for (var qr_i = 0; qr_i < num_hexes_in_map; qr_i++; ){
+	var auxQrKey = global.hex_qrKey[| qr_i];
 
 	var inst = instance_create_layer(0,0,layer_id, obj_hex);
 	with(inst){
@@ -69,3 +79,5 @@ for (var qr_i = 0; qr_i < num_hexes_in_map; qr_i++; ){
 		}
 	}
 }
+
+//scr_hex_mult_prob(0, 1.5, hex.terrain_prob, terrain.grass);
